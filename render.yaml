@@ -16,21 +16,17 @@ services:
       # For example, us-west-2 for the Oregon region
       - key: AWS_REGION
         sync: false 
-        value: us-west-1
       # A globally unique name for your bucket
       # For example, <your-username>-<database name>-render-postgres-backups
       - key: S3_BUCKET_NAME
-        value: felt-backup
         sync: false
       # Looks like "AKIAXXXXXXXXXXXXXXXX"
       - key: AWS_ACCESS_KEY_ID
-        value: AKIAT565D5TEBHZ2APEL
         sync: false
       - key: AWS_SECRET_ACCESS_KEY
         sync: false
       # Postgres version of your Postgres instance 
       # For example, 14
       - key: POSTGRES_VERSION
-        value: 13
         sync: false
 
