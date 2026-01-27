@@ -25,27 +25,11 @@ services:
         sync: false
       - key: AWS_SECRET_ACCESS_KEY
         sync: false
-<<<<<<< HEAD
       # Postgres version of your Postgres instance
-      # For example, 14
-||||||| parent of 21203a6 (Adding PG16 and reworking to minimal Alpine image)
-      # Postgres version of your Postgres instance 
-      # For example, 14
-=======
-      # Postgres version of your Postgres instance 
       # For example, 16
->>>>>>> 21203a6 (Adding PG16 and reworking to minimal Alpine image)
       - key: POSTGRES_VERSION
-<<<<<<< HEAD
-        value: 18
-||||||| parent of 21203a6 (Adding PG16 and reworking to minimal Alpine image)
-        sync: false
-
-=======
         sync: false
       # Alpine base-OS version, see README
       # For example, 3.20
       - key: ALPINE_VERSION
         sync: false
-
->>>>>>> 21203a6 (Adding PG16 and reworking to minimal Alpine image)
