@@ -58,7 +58,6 @@ upload_to_bucket() {
 }
 
 main() {
-    aws --version
     ensure_bucket_exists
     echo "Taking backup and uploading it to S3..."
     pg_dump_database | gzip | upload_to_bucket
