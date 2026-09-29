@@ -50,12 +50,15 @@ pg_dump_database() {
 }
 
 upload_to_bucket() {
-    # if the zipped backup file is larger than 50 GB add the --expected-size option
-    # see https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
-    s3 cp - "s3://$S3_BUCKET_NAME/$(date +%Y/%m/%d/backup-%H-%M-%S.sql.gz)"
+    # A stream without --expected-size uploads in 8 MiB parts, which S3's 10,000-part limit caps at ~84 GB.
+    # Buckets with Object Lock reject uploads that don't send a checksum.
+    s3 cp - "s3://$S3_BUCKET_NAME/$(date +%Y/%m/%d/backup-%H-%M-%S.sql.gz)" \
+        --expected-size 250000000000 \
+        --checksum-algorithm CRC32
 }
 
 main() {
+    aws --version
     ensure_bucket_exists
     echo "Taking backup and uploading it to S3..."
     pg_dump_database | gzip | upload_to_bucket
